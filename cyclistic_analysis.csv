@@ -1,0 +1,41 @@
+-- Exploratory data analysis
+-- Row count
+SELECT COUNT(*)
+FROM rides;
+
+-- Sample data
+SELECT * FROM rides LIMIT 100;
+
+-- Check for duplicates in unique column
+SELECT ride_id, COUNT(ride_id)
+FROM rides
+GROUP BY ride_id
+HAVING COUNT(ride_id) > 1;
+
+-- Are there more members than casual riders?
+SELECT member_casual, COUNT(member_casual)
+FROM rides
+GROUP BY 1;
+
+-- Which bike type do members use most? Which bike type do casual riders use most?
+SELECT member_casual, rideable_type, COUNT(rideable_type) AS count
+FROM rides
+WHERE member_casual = 'member'
+GROUP BY 2
+UNION
+SELECT member_casual, rideable_type, COUNT(rideable_type) AS ride_count
+FROM rides
+WHERE member_casual = 'casual'
+GROUP BY 2;
+
+SELECT CASE member_casual
+	WHEN member_casual = 'member' THEN 'member'
+	WHEN member_casual = 'casual' THEN 'casual'
+END AS member_casual, rideable_type, COUNT(rideable_type) AS ride_count
+FROM rides
+GROUP BY 1, 2;
+
+-- What is the average duration of rides for members vs casual riders?
+SELECT member_casual, AVG(TIMEDIFF(ended_at, started_at)) AS average_ride_minutes
+FROM rides
+GROUP BY 1;

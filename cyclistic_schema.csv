@@ -1,0 +1,107 @@
+-- Create schema 
+CREATE SCHEMA cyclistic; 
+USE cyclistic;
+
+-- Create table
+-- DROP TABLE IF EXISTS ride;
+CREATE TABLE rides ( 
+ride_id varchar(50) NOT NULL, 
+rideable_type varchar(50) NOT NULL, 
+started_at datetime NOT NULL, 
+ended_at datetime NOT NULL, 
+start_station_name varchar(255), 
+start_station_id varchar(50), 
+end_station_name varchar(255), 
+end_station_id varchar(50), 
+start_lat text, 
+start_lng text, 
+end_lat text, 
+end_lng text, 
+member_casual varchar(8) NOT NULL,
+PRIMARY KEY (ride_id)
+);
+
+-- Load .csv files
+LOAD DATA INFILE '202201-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202202-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202203-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202204-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202205-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202206-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202207-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202208-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202209-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202210-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202211-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE '202212-divvy-tripdata.csv' 
+INTO TABLE rides 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\r\n' 
+IGNORE 1 ROWS;
