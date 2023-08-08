@@ -18,16 +18,6 @@ FROM rides
 GROUP BY 1;
 
 -- Which bike type do members use most? Which bike type do casual riders use most?
-SELECT member_casual, rideable_type, COUNT(rideable_type) AS count
-FROM rides
-WHERE member_casual = 'member'
-GROUP BY 2
-UNION
-SELECT member_casual, rideable_type, COUNT(rideable_type) AS ride_count
-FROM rides
-WHERE member_casual = 'casual'
-GROUP BY 2;
-
 SELECT CASE member_casual
 	WHEN member_casual = 'member' THEN 'member'
 	WHEN member_casual = 'casual' THEN 'casual'
@@ -39,3 +29,4 @@ GROUP BY 1, 2;
 SELECT member_casual, AVG(TIMEDIFF(ended_at, started_at)) AS average_ride_minutes
 FROM rides
 GROUP BY 1;
+
