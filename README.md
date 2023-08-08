@@ -5,7 +5,7 @@
    - Used pivot tables for quick analysis
      
 2. MySQL Cyclistic Bike Share Analysis
-   - Differentiate the difference between casual riders and members
-   - Cleaned large dataset containing 5,000,000+ rows
+   - Large dataset containing 5,000,000+ rows
+   - Data preprocessing, cleaning, transforming, and exploration
    - Use of aggregate functions for analysis
    
