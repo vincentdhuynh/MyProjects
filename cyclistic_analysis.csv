@@ -1,10 +1,20 @@
--- Exploratory data analysis
--- Row count
+Scenario
+
+You are a junior data analyst working in the marketing analyst team at Cyclistic, a bike-share company in Chicago. The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, your team wants to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, your team will design a new marketing strategy to convert casual riders into annual members. But first, Cyclistic executives must approve your recommendations, so they must be backed up with compelling data insights and professional data visualizations.
+
+
+Business Task: Develop a marketing strategy that will convert more casual riders into annual members that will need to be approved by the Cyclistic executive team.
+
+Data Source: As part of Cyclistic's License Agreement, they collect data on their riders and make it directly accessible to the public on their main website. The data has been sorted and filtered by Cyclistic and organized by month, starting from Jan. 2022 to Dec. 2022.
+
+
+Exploratory Data Analysis
+
 SELECT COUNT(*)
 FROM rides;
 
--- Sample data
-SELECT * FROM rides LIMIT 100;
+SELECT * 
+FROM rides LIMIT 1000;
 
 -- Check for duplicates in unique column
 SELECT ride_id, COUNT(ride_id)
@@ -29,4 +39,5 @@ GROUP BY 1, 2;
 SELECT member_casual, AVG(TIMEDIFF(ended_at, started_at)) AS average_ride_minutes
 FROM rides
 GROUP BY 1;
+
 
