@@ -2,7 +2,6 @@
 
 This repository containts portfolio of data analysis projects for the purpose of self-learning. Presented in the form of SQL and Microsoft Excel files. 
 
-Projects included are: 
 
 1. Microsoft Excel - Coffee Sales Dashboard.
 
