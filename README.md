@@ -10,6 +10,3 @@ Interactive dashboard that is designed to revolutionize the way users can analyz
 2. MySQL - Cyclistic Bike Share Analysis
 
 Cyclistic is a bike-share company in Chicago and the director of marketing believes the company’s future success depends on maximizing the number of annual memberships by understanding how casual riders and annual members use Cyclistic bikes differently. 
-
-Business Task: Develop a marketing strategy that will convert more casual riders into annual members that will need to be approved by the Cyclistic executive team.
-
