@@ -1,33 +1,64 @@
---Exploratory Data Analysis
+**Exploratory Data Analysis**
 
+-- Row count
 SELECT COUNT(*)
 FROM rides;
 
-SELECT * 
-FROM rides LIMIT 1000;
+-- Sample data
+SELECT * FROM rides LIMIT 100;
 
 -- Check for duplicates in unique column
+
 SELECT ride_id, COUNT(ride_id)
 FROM rides
 GROUP BY ride_id
 HAVING COUNT(ride_id) > 1;
 
--- Are there more members than casual riders?
+-- What is the distribution of casual riders and annual members?
+
 SELECT member_casual, COUNT(member_casual)
 FROM rides
 GROUP BY 1;
 
--- Which bike type do members use most? Which bike type do casual riders use most?
-SELECT CASE member_casual
-	WHEN member_casual = 'member' THEN 'member'
-	WHEN member_casual = 'casual' THEN 'casual'
-END AS member_casual, rideable_type, COUNT(rideable_type) AS ride_count
-FROM rides
-GROUP BY 1, 2;
+-- How frequently do annual members and casual riders use the service?
 
--- What is the average duration of rides for members vs casual riders?
-SELECT member_casual, AVG(TIMEDIFF(ended_at, started_at)) AS average_ride_minutes
+SELECT member_casual, rideable_type, COUNT(*) AS count
 FROM rides
+WHERE member_casual = 'member'
+GROUP BY 2
+UNION
+SELECT member_casual, rideable_type, COUNT(*) AS ride_count
+FROM rides
+WHERE member_casual = 'casual'
+GROUP BY 2;
+
+-- What is the average ride duration for annual members compared to casual riders?
+
+SELECT member_casual, AVG(DATEDIFF(ended_at, started_at)) AS avg_ride_duration
+FROM RIDES
 GROUP BY 1;
 
+-- * Popular Start and End Stations
+-- Which start and end stations are most frequently used by annual members and casual riders?
 
+SELECT member_casual, start_station_name, end_station_name, COUNT(*) AS ride_count
+FROM rides
+GROUP BY 1, 2, 3
+ORDER BY 4 DESC;
+
+-- Are there any seasonal or monthly trends in membership sign-ups and ride frequency?
+
+SELECT member_casual, DATE_FORMAT(started_at, '%m') AS ride_month, COUNT(*) AS ride_count
+FROM rides
+GROUP BY 1, 2
+ORDER BY 2;
+
+-- What percentage of casual riders have converted to annual members over time?
+
+SELECT YEAR(started_at) AS year, MONTH(started_at) AS month,
+       SUM(CASE WHEN member_casual = 'member' THEN 1 ELSE 0 END) AS annual_members,
+       SUM(CASE WHEN member_casual = 'casual' THEN 1 ELSE 0 END) AS casual_riders,
+       (SUM(CASE WHEN member_casual = 'member' THEN 1 ELSE 0 END) / SUM(CASE WHEN member_casual = 'casual' THEN 1 ELSE 0 END)) AS conversion_rate
+FROM rides
+GROUP BY 1, 2
+ORDER BY 1, 2;
