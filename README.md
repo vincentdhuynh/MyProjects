@@ -1,6 +1,6 @@
 # Data Analysis Portfolio
 
-This repository contains portfolio of data analysis projects for the purpose of self-learning. Presented in the form of MySQL and Microsoft Excel files. 
+This repository contains portfolio of data analysis projects for the purpose of self-learning and presentation of skills developed, in the form of MySQL and Microsoft Excel files. 
 
 
 1. Microsoft Excel - Coffee Sales Dashboard.
